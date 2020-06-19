@@ -11,12 +11,34 @@ jobs:
       matrix:
         config:
           - {python-version: 2.7, GDALVERSION: "1.11.5",   PROJVERSION: "4.8.0"}
-          #- {python-version: 3.6, GDALVERSION: "2.4.4",   PROJVERSION: "4.9.3"}
-          #- {python-version: 3.6, GDALVERSION: "3.0.4",   PROJVERSION: "6.2.1"}
-          #- {python-version: 3.6, GDALVERSION: "3.1.0",   PROJVERSION: "6.3.2"}
-          #- {python-version: 3.7, GDALVERSION: "3.1.0",   PROJVERSION: "6.3.2"}
-          #- {python-version: 3.8, GDALVERSION: "3.1.0",   PROJVERSION: "6.3.2"}
-#          - {python-version: 3.6, GDALVERSION: "master",  PROJVERSION: "7.0.1", continue-on-error: true}
+          - {python-version: 3.6, GDALVERSION: "2.0.0",   PROJVERSION: "4.9.3"}
+          - {python-version: 3.6, GDALVERSION: "2.0.1",   PROJVERSION: "4.9.3"}
+          - {python-version: 3.6, GDALVERSION: "2.0.2",   PROJVERSION: "4.9.3"}
+          - {python-version: 3.6, GDALVERSION: "2.0.3",   PROJVERSION: "4.9.3"}
+          - {python-version: 3.6, GDALVERSION: "2.1.0",   PROJVERSION: "4.9.3"}
+          - {python-version: 3.6, GDALVERSION: "2.1.1",   PROJVERSION: "4.9.3"}
+          - {python-version: 3.6, GDALVERSION: "2.1.2",   PROJVERSION: "4.9.3"}
+          - {python-version: 3.6, GDALVERSION: "2.1.3",   PROJVERSION: "4.9.3"}
+          - {python-version: 3.6, GDALVERSION: "2.1.4",   PROJVERSION: "4.9.3"}
+          - {python-version: 3.6, GDALVERSION: "2.2.0",   PROJVERSION: "4.9.3"}
+          - {python-version: 3.6, GDALVERSION: "2.2.1",   PROJVERSION: "4.9.3"}
+          - {python-version: 3.6, GDALVERSION: "2.2.2",   PROJVERSION: "4.9.3"}
+          - {python-version: 3.6, GDALVERSION: "2.2.3",   PROJVERSION: "4.9.3"}
+          - {python-version: 3.6, GDALVERSION: "2.2.4",   PROJVERSION: "4.9.3"}
+          - {python-version: 3.6, GDALVERSION: "2.3.0",   PROJVERSION: "4.9.3"}
+          - {python-version: 3.6, GDALVERSION: "2.3.1",   PROJVERSION: "4.9.3"}
+          - {python-version: 3.6, GDALVERSION: "2.3.2",   PROJVERSION: "4.9.3"}
+          - {python-version: 3.6, GDALVERSION: "2.3.3",   PROJVERSION: "4.9.3"}
+          - {python-version: 3.6, GDALVERSION: "2.4.0",   PROJVERSION: "4.9.3"}
+          - {python-version: 3.6, GDALVERSION: "2.4.1",   PROJVERSION: "4.9.3"}
+          - {python-version: 3.6, GDALVERSION: "2.4.2",   PROJVERSION: "4.9.3"}
+          - {python-version: 3.6, GDALVERSION: "2.4.3",   PROJVERSION: "4.9.3"}
+          - {python-version: 3.6, GDALVERSION: "2.4.4",   PROJVERSION: "4.9.3"}
+          - {python-version: 3.6, GDALVERSION: "3.0.0",   PROJVERSION: "6.2.1"}
+          - {python-version: 3.6, GDALVERSION: "3.0.1",   PROJVERSION: "6.2.1"}
+          - {python-version: 3.6, GDALVERSION: "3.0.2",   PROJVERSION: "6.2.1"}
+          - {python-version: 3.6, GDALVERSION: "3.0.3",   PROJVERSION: "6.2.1"}
+          - {python-version: 3.6, GDALVERSION: "3.0.4",   PROJVERSION: "6.2.1"}
 
     steps:
       - uses: actions/checkout@v2
@@ -50,11 +72,11 @@ jobs:
         run: |
           sudo apt install libatlas-dev libatlas-base-dev gfortran libsqlite3-dev sqlite3 python-dev libgeos-dev
           
-      - name: Dependency Cache
-        uses: actions/cache@v2
-        with:
-          path: gdalinstall
-          key: ${{ runner.os }}-gdal-${{ matrix.config.GDALVERSION }}-proj-${{ matrix.config.PROJVERSION }}
+      #- name: Dependency Cache
+        #uses: actions/cache@v2
+        #with:
+          #path: gdalinstall
+          #key: ${{ runner.os }}-gdal-${{ matrix.config.GDALVERSION }}-proj-${{ matrix.config.PROJVERSION }}
 
       - name: Build PROJ
         run: |
