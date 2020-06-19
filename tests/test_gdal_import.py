@@ -1,4 +1,9 @@
-from osgeo import ogr
-from osgeo import gdal
+import pytest
 
-print(gdal.__version__) 
+
+def test_import():
+    from osgeo import ogr
+    from osgeo import gdal
+
+    print(gdal.__version__) 
+    assert True
