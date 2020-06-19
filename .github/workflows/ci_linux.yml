@@ -66,7 +66,7 @@ jobs:
           source $GITHUB_WORKSPACE/env_variables
           chmod +x scripts/travis_gdal_install.sh && ./scripts/travis_gdal_install.sh
           gdal-config --version
-          find $GDALINST | grep egg
+          ls -l $GDALINST/gdal-$GDALVERSION
 
       - name: Install Python dependencies
         run: |
