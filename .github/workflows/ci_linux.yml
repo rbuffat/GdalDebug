@@ -48,7 +48,7 @@ jobs:
 
       - name: Install  packages
         run: |
-          sudo apt install libatlas-dev libatlas-base-dev gfortran libsqlite3-dev sqlite3
+          sudo apt install libatlas-dev libatlas-base-dev gfortran libsqlite3-dev sqlite3 geos python-dev
           
       - name: Dependency Cache
         uses: actions/cache@v2
@@ -67,3 +67,12 @@ jobs:
           chmod +x scripts/travis_gdal_install.sh && ./scripts/travis_gdal_install.sh
           gdal-config --version
 
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pytest
+
+      - name: Test with pytest
+        run: |
+          source $GITHUB_WORKSPACE/env_variables
+          python -m pytest tests
